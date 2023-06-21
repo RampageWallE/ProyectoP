@@ -16,7 +16,7 @@ class EmpleadoController extends Controller
 
     public function index()
     {
-        $empleados=User::all();
+        $empleados=User::empleados()->get();
         
         return view('Empleados.index',compact('empleados'));
         //
