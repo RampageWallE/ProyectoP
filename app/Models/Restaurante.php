@@ -10,6 +10,8 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class Restaurante extends Model
 {
     use HasFactory;
+    protected $connection='mongodb';
+    protected $collection='restaurantes';
 
     public function reservas()
     {

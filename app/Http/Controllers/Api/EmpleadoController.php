@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Restaurante;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class RestauranteController extends Controller
+class EmpleadoController extends Controller
 {
     public function __construct()
     {
@@ -16,15 +16,15 @@ class RestauranteController extends Controller
 
     public function index()
     {
-        $restaurantes=Restaurante::all();
+        $empleados=User::all();
         
-        return view('Restaurantes.index',compact('restaurantes'));
+        return view('Empleados.index',compact('empleados'));
         //
     }
 
     public function create()
     {
-        return view('Restaurantes.create');
+        return view('Empleados.create');
     }
 
     public function insert(Request $request)
@@ -47,21 +47,21 @@ class RestauranteController extends Controller
 
         $this->validate($request, $rules, $messages);
         
-        $restaurante = new Restaurante();
-        $restaurante->nombre = $request->nombre;
-        $restaurante->descripcion = $request->descripcion;
-        $restaurante->mesas = $request->mesas;
-        $restaurante->direccion = $request->direccion;
-        $restaurante->imagen_portada = $request->imagen_portada;
+        $empleado = new User();
+        $empleado->nombre = $request->nombre;
+        $empleado->descripcion = $request->descripcion;
+        $empleado->mesas = $request->mesas;
+        $empleado->direccion = $request->direccion;
+        $empleado->imagen_portada = $request->imagen_portada;
 
-        $restaurante->save();
-        return redirect(Route('restaurantes.view'));
+        $empleado->save();
+        return redirect(Route('empleados.view'));
     }
 
     public function editar($id)
     {
-        $restaurante = Restaurante::where('_id',$id)->first();
-        return view('Restaurantes.editar',compact('restaurante'));
+        $empleado = User::where('_id',$id)->first();
+        return view('Users.editar',compact('empleado'));
     }
 
     public function update(Request $request, $id)
@@ -84,22 +84,22 @@ class RestauranteController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $restaurante = Restaurante::where('_id', $id)->first();
+        $empleado = User::where('_id', $id)->first();
         
-        $restaurante->nombre = $request->nombre;
-        $restaurante->descripcion = $request->descripcion;
-        $restaurante->mesas = $request->mesas;
-        $restaurante->direccion = $request->direccion;
-        $restaurante->imagen_portada = $request->imagen_portada;
+        $empleado->nombre = $request->nombre;
+        $empleado->descripcion = $request->descripcion;
+        $empleado->mesas = $request->mesas;
+        $empleado->direccion = $request->direccion;
+        $empleado->imagen_portada = $request->imagen_portada;
 
-        $restaurante->save();
+        $empleado->save();
 
-        return redirect(route('restaurantes.view'));
+        return redirect(route('empleados.view'));
     }
 
     public function destroy($id)
     {
-        Restaurante::destroy($id);
-        return redirect(route('restaurantes.view'));
+        User::destroy($id);
+        return redirect(route('empleados.view'));
     }
 }
