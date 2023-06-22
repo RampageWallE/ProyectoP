@@ -64,6 +64,7 @@
             </tbody>
             </table>
         </div>
+        {{-- <div class="card-body">{{$restaurantes->links()}}</div> --}}
         </div>
         
 @endsection

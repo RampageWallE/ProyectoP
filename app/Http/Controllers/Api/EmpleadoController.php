@@ -16,7 +16,7 @@ class EmpleadoController extends Controller
 
     public function index()
     {
-        $empleados=User::empleados()->get();
+        $empleados=User::empleados()->paginate(10);
         
         return view('Empleados.index',compact('empleados'));
         //
@@ -30,76 +30,97 @@ class EmpleadoController extends Controller
     public function insert(Request $request)
     {
         $rules= [
-            'nombre' => 'required|min:5',
-            'descripcion'=>'required|min:15',
-            'mesas' => 'required',
-            'direccion' =>'required|min:10',
+            'name' => 'required|min:5',
+            'dni'=>'required|min:8',
+            'email' => 'required|email|distinc',
+            'celular' =>'required|min:9',
+            'direccion'=> 'required|min:10',
         ];
         $messages=[
-            'nombre.required'=>'El nombre es obligatorio',
-            'nombre.min'=>'El nombre debe de tener mas de 3 letras',
-            'descripcion.required'=>'La descripcion es obligatorio',
-            'descripcion.min'=>'La descrpcion debe de tener mas de 15 letras',
-            'mesas.required'=>'El numero de mesas es requerido',
-            'direccion.required'=>'La direccion es requerida',
+            'name.required'=>'El nombre es obligatorio',
+            'name.min'=>'El nombre debe de tener mas de 5 letras',
+            'dni.required'=>'La descripcion es obligatorio',
+            'dni.min'=>'El dni debe de tener 8 caracteres',
+            'email.required'=>'El correo es requerido',
+            'email.email'=>'Ingresa un correo electronico valido',
+            'celular.required'=>'El numero de celular es requerido',
+            'celular.min'=>'El numero de celular debe de tener 9 caracteres',
+            'direccion:required'=>'La direccion es obligatoria',
             'direccion.min'=>'La direccion debe de tener mas de 10 letras'
         ];
 
         $this->validate($request, $rules, $messages);
-        
-        $empleado = new User();
-        $empleado->nombre = $request->nombre;
-        $empleado->descripcion = $request->descripcion;
-        $empleado->mesas = $request->mesas;
-        $empleado->direccion = $request->direccion;
-        $empleado->imagen_portada = $request->imagen_portada;
 
-        $empleado->save();
+        User::create(
+            $request->only('name','email','dni','celular','direccion')
+            +[
+                'role'=>'empleado',
+                'password'=>bcrypt($request->input('password'))
+            ]
+        );
+        
+        // $empleado = new User();
+        // $empleado->name = $request->name;
+        // $empleado->dni = $request->dni;
+        // $empleado->email = $request->email;
+        // $empleado->celular = $request->celular;
+        // $empleado->direccion = $request->direccion;
+        // $empleado->save();
+
         return redirect(Route('empleados.view'));
     }
 
     public function editar($id)
     {
-        $empleado = User::where('_id',$id)->first();
-        return view('Users.editar',compact('empleado'));
+        $empleado = User::empleados()->findOrFail($id);
+        return view('Empleados.editar',compact('empleado'));
     }
 
     public function update(Request $request, $id)
     {
         $rules= [
-            'nombre' => 'required|min:5',
-            'descripcion'=>'required|min:15',
-            'mesas' => 'required',
-            'direccion' =>'required|min:10',
+            'name' => 'required|min:5',
+            'dni'=>'required|min:8',
+            'email' => 'required|email',
+            'celular' =>'required|min:9',
+            'direccion'=> 'required|min:10',
         ];
         $messages=[
-            'nombre.required'=>'El nombre es obligatorio',
-            'nombre.min'=>'El nombre debe de tener mas de 3 letras',
-            'descripcion.required'=>'La descripcion es obligatorio',
-            'descripcion.min'=>'La descrpcion debe de tener mas de 15 letras',
-            'mesas.required'=>'El numero de mesas es requerido',
-            'direccion.required'=>'La direccion es requerida',
+            'name.required'=>'El nombre es obligatorio',
+            'name.min'=>'El nombre debe de tener mas de 5 letras',
+            'dni.required'=>'El dni es obligatorio',
+            'dni.min'=>'El dni debe de tener 8 caracteres',
+            'email.required'=>'El correo es requerido',
+            'email.email'=>'Ingresa un correo electronico valido',
+            'celular.required'=>'El numero de celular es requerido',
+            'celular.min'=>'El numero de celular debe de tener 9 caracteres',
+            'direccion.required'=>'La direccion es obligatoria',
             'direccion.min'=>'La direccion debe de tener mas de 10 letras'
         ];
 
         $this->validate($request, $rules, $messages);
 
-        $empleado = User::where('_id', $id)->first();
-        
-        $empleado->nombre = $request->nombre;
-        $empleado->descripcion = $request->descripcion;
-        $empleado->mesas = $request->mesas;
-        $empleado->direccion = $request->direccion;
-        $empleado->imagen_portada = $request->imagen_portada;
+        $empleado = User::empleados()->findOrFail($id);
 
-        $empleado->save();
+        $data = $request->only('name','email','dni','celular','direccion');
+        $password = $request->input('password');
+
+        if($password)
+            $data["password"] = bcrypt($password);
+        
+        $empleado->fill($data);
+        $empleado->save();     
+
 
         return redirect(route('empleados.view'));
     }
 
     public function destroy($id)
     {
-        User::destroy($id);
+        // User::destroy($id);
+        
+        $user = User::empleados()->findOrFail($id);
+        $user -> delete();
         return redirect(route('empleados.view'));
     }
 }

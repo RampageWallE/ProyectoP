@@ -17,4 +17,9 @@ class Restaurante extends Model
     {
         return $this->hasMany(Reserva::class);
     }
+
+    // public function scopeRestaurantes($query){
+    //     // return $query->where('role','cliente');
+    //     return $query->all();
 }
+

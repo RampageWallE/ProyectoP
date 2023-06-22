@@ -64,6 +64,7 @@
             </tbody>
             </table>
         </div>
+        <div class="card-body">{{$empleados->links()}}</div>
         </div>
         
 @endsection
