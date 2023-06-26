@@ -6,13 +6,11 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Restaurantes</h3>
+                <h3 class="mb-0">Reservas del cliente <strong> {{auth()->user()->name}}</h3></strong>
             </div>
-            @if (auth()->user()->role == 'admin')
-                <div class="col text-right">
-                    <a href="{{route('restaurante.create')}}" class="btn btn-sm btn-primary">Nuevo restaurante</a>
-                </div>
-            @endif
+            <div class="col text-right">
+                <a href="{{route('home')}}" class="btn btn-sm btn-primary">Nuevo reserva</a>
+            </div>
             </div>
         </div>
         <div class="table-responsive">
@@ -20,41 +18,41 @@
             <table class="table align-items-center table-flush">
             <thead class="thead-light">
                 <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col" width="50px">Descripcion</th>
-                <th scope="col">Cantidad de mesas</th>
-                <th scope="col">Direccion</th>
-                <th scope="col">imagen</th>
+                <th scope="col">Id de reserva</th>
+                <th scope="col">Fecha de creacion</th>
+                <th scope="col">Nombre del restaurante</th>
+                <th scope="col">Cantidad de personas</th>
+                <th scope="col">Fecha de reserva</th>
                 <th scope="col">Modificar</th>
                 <th scope="col">Eliminar</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($restaurantes as $restaurante)
+                @foreach ($reservas as $reserva)
                 <tr>
                     <th scope="row">
-                        {{$restaurante->nombre}}
+                        {{$reserva->_id}}
                     </th>
                     <td>
-                        {{$restaurante->descripcion}}
+                        {{$reserva->created_at}}
                     </td>
                     <td>
-                        {{$restaurante->mesas}}
+                        {{$reserva->restaurantes->nombre}}
                     </td>
                     <td>
-                        {{$restaurante->direccion}}
+                        {{$reserva->cantidad}}
                     </td>
                     <td>
-                        {{$restaurante->imagen_portada}}
+                        {{$reserva->fecha_reserva}}
                     </td>
                     <td>
-                        <form action="{{route('restaurante.editar', $restaurante->_id)}}" method="GET">
+                        <form action="{{route('reserva.editar', $reserva->_id)}}" method="GET">
                             @csrf
                             <button type="submit" class="btn btn-sm btn-warning">Modificar</button>                   
                         </form>
                     </td>
                     <td>
-                        <form action="{{route('restaurante.delete', $restaurante->_id)}}" method="post">
+                        <form action="{{route('reserva.delete', $reserva->_id)}}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>                   
@@ -66,6 +64,7 @@
             </tbody>
             </table>
         </div>
-        {{-- <div class="card-body">{{$restaurantes->links()}}</div> --}}
-        </div>        
+        {{-- <div class="card-body">{{$reservas->links()}}</div> --}}
+        </div>
+        
 @endsection

@@ -54,4 +54,7 @@ class User extends Authenticatable
     public function scopeEmpleados($query){
         return $query->where('role','empleado');
     }
+    public function reservas(){
+        return $this->hasMany(Reserva::class,'_id');
+    }
 }

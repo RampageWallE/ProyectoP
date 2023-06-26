@@ -6,13 +6,11 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Restaurantes</h3>
+                <h3 class="mb-0">Historial de consultas</h3>
             </div>
-            @if (auth()->user()->role == 'admin')
-                <div class="col text-right">
-                    <a href="{{route('restaurante.create')}}" class="btn btn-sm btn-primary">Nuevo restaurante</a>
-                </div>
-            @endif
+            <div class="col text-right">
+                <a href="{{route('consulta.create')}}" class="btn btn-sm btn-primary">Nuevo consulta</a>
+            </div>
             </div>
         </div>
         <div class="table-responsive">
@@ -20,41 +18,41 @@
             <table class="table align-items-center table-flush">
             <thead class="thead-light">
                 <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col" width="50px">Descripcion</th>
-                <th scope="col">Cantidad de mesas</th>
-                <th scope="col">Direccion</th>
-                <th scope="col">imagen</th>
+                <th scope="col">Id de consulta</th>
+                <th scope="col">Consulta</th>
+                <th scope="col" width="50px">Estado</th>
+                <th scope="col">Quien respondio?</th>
+                <th scope="col">Respuesta</th>
                 <th scope="col">Modificar</th>
                 <th scope="col">Eliminar</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($restaurantes as $restaurante)
+                @foreach ($consultas as $consulta)
                 <tr>
                     <th scope="row">
-                        {{$restaurante->nombre}}
+                        {{$consulta->_id}}
                     </th>
                     <td>
-                        {{$restaurante->descripcion}}
+                        {{$consulta->consulta}}
                     </td>
                     <td>
-                        {{$restaurante->mesas}}
+                        {{$consulta->estado}}
                     </td>
                     <td>
-                        {{$restaurante->direccion}}
+                        {{$consulta->id_empleado}}
                     </td>
                     <td>
-                        {{$restaurante->imagen_portada}}
+                        {{$consulta->respuesta}}
                     </td>
                     <td>
-                        <form action="{{route('restaurante.editar', $restaurante->_id)}}" method="GET">
+                        <form action="{{route('consulta.editar', $consulta->_id)}}" method="GET">
                             @csrf
                             <button type="submit" class="btn btn-sm btn-warning">Modificar</button>                   
                         </form>
                     </td>
                     <td>
-                        <form action="{{route('restaurante.delete', $restaurante->_id)}}" method="post">
+                        <form action="{{route('consulta.delete', $consulta->_id)}}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>                   
@@ -66,6 +64,7 @@
             </tbody>
             </table>
         </div>
-        {{-- <div class="card-body">{{$restaurantes->links()}}</div> --}}
-        </div>        
+        {{-- <div class="card-body">{{$consultas->links()}}</div> --}}
+        </div>
+        
 @endsection

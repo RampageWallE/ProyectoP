@@ -22,6 +22,14 @@ class RestauranteController extends Controller
         //
     }
 
+    public function index2()
+    {
+        $restaurantes=Restaurante::all();
+        
+        return view('home',compact('restaurantes'));
+        //
+    }
+
     public function create()
     {
         return view('Restaurantes.create');

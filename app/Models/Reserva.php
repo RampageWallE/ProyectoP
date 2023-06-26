@@ -10,9 +10,14 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class Reserva extends Model
 {
     use HasFactory;
+    protected $connection='mongodb';
+    protected $collection='reservas';
 
-    public function restaurante()
-    {
-        return $this->belongsTo(Restaurante::class);
+    public function restaurantes(){
+        return $this->belongsTo(Restaurante::class, 'id_restaurante');
+    }
+
+    public function usuarios(){
+        return $this->belongsTo(User::class,'id_cliente');
     }
 }

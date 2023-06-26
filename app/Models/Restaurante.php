@@ -15,7 +15,7 @@ class Restaurante extends Model
 
     public function reservas()
     {
-        return $this->hasMany(Reserva::class);
+        return $this->hasMany(Reserva::class, '_id');
     }
 
     // public function scopeRestaurantes($query){
