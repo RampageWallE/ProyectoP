@@ -4,7 +4,8 @@
   
   @elseif(auth()->user()->role == 'empleado')
   <h6 class="navbar-heading text-muted">Gestion empleado</h6>
-
+  @elseif(auth()->user()->role == 'cliente')
+  <h6 class="navbar-heading text-muted">Gestion cliente</h6>
   @endif
   <ul class="navbar-nav">
     <li class="nav-item ">
@@ -89,6 +90,7 @@
   </ul>   
   @endif
   @if (auth()->user()->role == 'cliente')
+  <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link " href="{{route('reservas.view')}}">
         <i class="fas fa-bed text-warning"></i> Reservas clientes
@@ -128,18 +130,4 @@
 
 
     <!-- Navigation -->
-    @if (auth()->user()->role == 'empleado' or 'admin' )          
-    <h6 class="navbar-heading text-muted">Documentation</h6>
-    <ul class="navbar-nav mb-md-3">            
-      <li class="nav-item">
-        <a class="nav-link" href="">
-          <i class="ni ni-books text-default"></i> Getting started
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="">
-          <i class="ni ni-chart-bar-32 text-warning"></i> Foundation
-        </a>
-      </li>
-    </ul>
-  @endif
+
