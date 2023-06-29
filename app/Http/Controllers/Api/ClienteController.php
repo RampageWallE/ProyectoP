@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
     public function __construct()
     {
-       $this->middleware('auth');
+       $this->middleware(['auth','empleadmin']);
         
     }
 

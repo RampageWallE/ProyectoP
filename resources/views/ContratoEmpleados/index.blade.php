@@ -6,10 +6,10 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Empleados</h3>
+                <h3 class="mb-0">Clientes</h3>
             </div>
             <div class="col text-right">
-                <a href="{{route('empleado.create')}}" class="btn btn-sm btn-primary">Nuevo empleado</a>
+                <a href="{{route('cliente.create')}}" class="btn btn-sm btn-primary">Nuevo cliente</a>
             </div>
             </div>
         </div>
@@ -28,40 +28,34 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($empleados as $empleado)
+                @foreach ($clientes as $cliente)
                 <tr>
                     <th scope="row">
-                        {{$empleado->name}}
+                        {{$cliente->name}}
                     </th>
                     <td>
-                        {{$empleado->dni}}
+                        {{$cliente->dni}}
                     </td>
                     <td>
-                        {{$empleado->email}}
+                        {{$cliente->email}}
                     </td>
                     <td>
-                        {{$empleado->celular}}
+                        {{$cliente->celular}}
                     </td>
                     <td>
-                        {{$empleado->direccion}}
+                        {{$cliente->direccion}}
                     </td>
                     <td>
-                        <form action="{{route('empleado.editar', $empleado->_id)}}" method="GET">
+                        <form action="{{route('cliente.editar', $cliente->_id)}}" method="GET">
                             @csrf
                             <button type="submit" class="btn btn-sm btn-warning">Modificar</button>                   
                         </form>
                     </td>
                     <td>
-                        <form action="{{route('empleado.delete', $empleado->_id)}}" method="post">
+                        <form action="{{route('cliente.delete', $cliente->_id)}}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>                   
-                        </form>
-                    </td>
-                    <td>
-                        <form action="{{route('empleados.contrato.view', $empleado->_id)}}" method="GET">
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-danger">Ver<br>Contratos </button>                   
                         </form>
                     </td>
                     </tr>
@@ -70,7 +64,7 @@
             </tbody>
             </table>
         </div>
-        <div class="card-body">{{$empleados->links()}}</div>
+        <div class="card-body">{{$clientes->links()}}</div>
         </div>
         
 @endsection

@@ -39,7 +39,7 @@
     </li>
     <li class="nav-item">
       <a class="nav-link " href="{{route('rrespuestas.view')}}">
-        <i class="fas fa-bed text-warning"></i> Consultas 
+        <i class="fas fa-bed text-warning"></i> Responder consultas 
       </a>
     </li>      
     {{-- CLIENTES GAAAAAAAAA --}}
@@ -56,11 +56,7 @@
         <i class="fas fa-bed text-warning"></i> Consultas clientes 
       </a>
     </li>   
-    <li class="nav-item">
-      <a class="nav-link " href="{{route('rrespuestas.view')}}">
-        <i class="fas fa-bed text-warning"></i> Responder consultas
-      </a>
-    </li> 
+
   </ul>  
     {{-- END CLIENTES  --}}
     

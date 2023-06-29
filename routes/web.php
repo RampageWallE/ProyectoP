@@ -49,10 +49,15 @@ Route::controller(RestauranteController::class)->group(function(){
 Route::controller(EmpleadoController::class)->group(function(){
     Route::get('empleados','index')->name('empleados.view');
     Route::get('empleado/create','create')->name('empleado.create');
+    Route::post('empleado/insert','insert')->name('empleado.sendData');
     Route::get('empleado/{id}/editar','editar')->name('empleado.editar');
     Route::put('empleado/{id}/update','update')->name('empleado.update');
     Route::delete('empleado/{id}/destroy','destroy')->name('empleado.delete');
-    Route::post('empleado/insert','insert')->name('empleado.sendData');
+    Route::get('empleado/{id_empleado}/contratos','index_contrato')->name('empleados.contrato.view');
+    Route::get('empleado/{id_empleado}/contrato/create','create_contrato')->name('empleado.contrato.create');
+    Route::post('empleado/{id_empleado}/contrato/create','insert_contrato')->name('empleado.contrato.sendData');
+    Route::get('empleado/{id_contrato}/contrato/editar','editar_contrato')->name('empleado.contrato.editar');
+    Route::put('empleado/{id_contrato}/contrato/update','update_contrato')->name('empleado.contrato.update');
 });
 
 Route::controller(ClienteController::class)->group(function(){
@@ -90,3 +95,4 @@ Route::controller(RegistroRespuestaController::class)->group(function(){
     Route::delete('registro_respuesta/{id_consulta}/destroy','destroy')->name('rrespuesta.delete');
     Route::post('registro_respuesta/{id_consulta}/insert','insert')->name('rrespuesta.sendData');
 });
+
