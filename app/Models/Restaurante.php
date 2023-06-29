@@ -13,6 +13,7 @@ class Restaurante extends Model
     protected $connection='mongodb';
     protected $collection='restaurantes';
 
+
     public function reservas()
     {
         return $this->hasMany(Reserva::class, '_id');
@@ -20,6 +21,7 @@ class Restaurante extends Model
 
     // public function scopeRestaurantes($query){
     //     // return $query->where('role','cliente');
-    //     return $query->all();
+    //     return $query->get();
+    // }
 }
 

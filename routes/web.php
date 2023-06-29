@@ -58,6 +58,8 @@ Route::controller(EmpleadoController::class)->group(function(){
     Route::post('empleado/{id_empleado}/contrato/create','insert_contrato')->name('empleado.contrato.sendData');
     Route::get('empleado/{id_contrato}/contrato/editar','editar_contrato')->name('empleado.contrato.editar');
     Route::put('empleado/{id_contrato}/contrato/update','update_contrato')->name('empleado.contrato.update');
+    Route::delete('empleado/{id_contrato}/contrato/destroy','destroy_contrato')->name('empleado.contrato.destroy');
+
 });
 
 Route::controller(ClienteController::class)->group(function(){

@@ -23,6 +23,7 @@
                 <th scope="col" width="50px">Inicio de contrato</th>
                 <th scope="col">Fin de contrato</th>
                 <th scope="col">Modificar</th>
+                <th scope="col">Eliminar Contrato</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,13 +47,20 @@
                             <button type="submit" class="btn btn-sm btn-warning">Modificar</button>                   
                         </form>
                     </td>
+                    <td>
+                        <form action="{{route('empleado.contrato.destroy',$contrato->_id)}}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-sm btn-warning">eliminar</button>                   
+                        </form>
+                    </td>
                     </tr>
                     
                 @endforeach
             </tbody>
             </table>
         </div>
-        {{-- <div class="card-body">{{$empleados->links()}}</div> --}}
+        {{-- <div class="card-body">{{$contratos->links()}}</div> --}}
         </div>
         
 @endsection

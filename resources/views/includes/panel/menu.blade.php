@@ -73,11 +73,11 @@
         <i class="fas fa-bed text-warning"></i> Clientes
       </a>
     </li>
-    {{-- <li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link " href="{{route('reservas.view')}}">
-        <i class="fas fa-stethoscope text-info"></i> Reservas
+        <i class="fas fa-stethoscope text-info"></i> Reservas v empleado
       </a>
-    </li> --}}
+    </li>
     <li class="nav-item">
       <a class="nav-link " href="{{route('rrespuestas.view')}}">
         <i class="fas fa-bed text-warning"></i> Consultas 

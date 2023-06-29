@@ -53,6 +53,7 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
+        'ademcli' => \App\Http\Middleware\AdemcliMiddleware::class,
         'empleadmin' => \App\Http\Middleware\EmpleadoAdminMiddleware::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'empleado' => \App\Http\Middleware\EmpleadoMiddleware::class,

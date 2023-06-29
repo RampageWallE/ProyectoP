@@ -189,4 +189,11 @@ class EmpleadoController extends Controller
 
         return redirect(route('empleados.contrato.view',$contrato->id_empleado));
     }
+    public function destroy_contrato($id_contrato)
+    {
+        $contrato = ContratoEmpleado::findOrFail($id_contrato);
+        $id_empleado = $contrato->id_empleado;  
+        $contrato->delete(); 
+        return redirect(route('empleados.contrato.view',$id_empleado));
+    }
 }

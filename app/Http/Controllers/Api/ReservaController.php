@@ -12,16 +12,24 @@ class ReservaController extends Controller{
 
     public function __construct()
     {
-       $this->middleware(['auth','cliente']);
+       $this->middleware(['auth','ademcli']);
         
     }
 
     public function index()
     {
-        $reservas=Reserva::where('id_cliente', auth()->user()->id)->get();
-        // $reservas= Reserva::all();
-        return view('Reservas.index',compact('reservas'));
-        
+        if(auth()->user()->role =='admin'){
+            $reservas=Reserva::all();
+            return view('Reservas.index',compact('reservas'));
+        }
+        elseif(auth()->user()->role =='empleado'){
+            $reservas=Reserva::all();
+            return view('Reservas.index',compact('reservas'));
+        }
+        elseif (auth()->user()->role =='cliente'){
+            $reservas=Reserva::where('id_cliente', auth()->user()->id)->get();
+                return view('Reservas.index',compact('reservas'));   
+        }
     }
 
     public function create($id_restaurante)

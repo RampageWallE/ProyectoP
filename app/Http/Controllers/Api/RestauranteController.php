@@ -17,7 +17,7 @@ class RestauranteController extends Controller
     public function index()
     {
         $restaurantes=Restaurante::all();
-        
+        // $restaurantes=Restaurante::restaurantes()->paginate(10);
         return view('Restaurantes.index',compact('restaurantes'));
         //
     }
