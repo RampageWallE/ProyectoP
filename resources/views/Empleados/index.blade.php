@@ -25,6 +25,8 @@
                 <th scope="col">Direccion</th>
                 <th scope="col">Modificar</th>
                 <th scope="col">Eliminar</th>
+                <th scope="col">Contrato</th>
+
                 </tr>
             </thead>
             <tbody>

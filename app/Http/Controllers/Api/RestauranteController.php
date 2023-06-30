@@ -61,6 +61,7 @@ class RestauranteController extends Controller
         $restaurante->mesas = $request->mesas;
         $restaurante->direccion = $request->direccion;
         $restaurante->imagen_portada = $request->imagen_portada;
+        $restaurante->id_administrador = auth()->user()->id;
 
         $restaurante->save();
         return redirect(Route('restaurantes.view'));

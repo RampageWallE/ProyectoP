@@ -34,7 +34,7 @@
     </li>
     <li class="nav-item">
       <a class="nav-link " href="{{route('reservas.view')}}">
-        <i class="fas fa-stethoscope text-info"></i> Reservas v admin
+        <i class="fas fa-stethoscope text-info"></i> Revisar reservas 
       </a>
     </li>
     <li class="nav-item">
@@ -44,7 +44,7 @@
     </li>      
     {{-- CLIENTES GAAAAAAAAA --}}
   </ul>
-  <h6 class="navbar-heading text-muted">CLIENTES VISTAS</h6>
+  {{-- <h6 class="navbar-heading text-muted">CLIENTES VISTAS</h6>
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link " href="{{route('reservas.view')}}">
@@ -55,7 +55,7 @@
       <a class="nav-link " href="{{route('consultas.view')}}">
         <i class="fas fa-bed text-warning"></i> Consultas clientes 
       </a>
-    </li>   
+    </li>    --}}
 
   </ul>  
     {{-- END CLIENTES  --}}

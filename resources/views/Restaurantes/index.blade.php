@@ -25,6 +25,7 @@
                 <th scope="col">Cantidad de mesas</th>
                 <th scope="col">Direccion</th>
                 <th scope="col">imagen</th>
+                <th scope="col">Creado por</th>
                 <th scope="col">Modificar</th>
                 <th scope="col">Eliminar</th>
                 </tr>
@@ -46,6 +47,14 @@
                     </td>
                     <td>
                         {{$restaurante->imagen_portada}}
+                    </td>
+                    <td>
+                        @if($restaurante->creador->name == null)
+                            <h1>No hay nada</h1>
+                        @else
+                            {{$restaurante->creador->name}}     
+                        @endif
+                        
                     </td>
                     <td>
                         <form action="{{route('restaurante.editar', $restaurante->_id)}}" method="GET">

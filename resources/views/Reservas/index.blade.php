@@ -6,11 +6,24 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Reservas del cliente <strong> {{auth()->user()->name}}</h3></strong>
+                @if (auth()->user()->role == 'admin')
+                    <h3 class="mb-0">Revisar reservas </h3>
+                @elseif(auth()->user()->role == 'empleado')
+                    <h3 class="mb-0">Revisar reservas </h3>
+                @elseif(auth()->user()->role == 'cliente')
+                    <h3 class="mb-0">Reservas del cliente <strong> {{auth()->user()->name}}</h3></strong>
+                @endif
+
             </div>
-            <div class="col text-right">
-                <a href="{{route('home')}}" class="btn btn-sm btn-primary">Nuevo reserva</a>
-            </div>
+            @if (auth()->user()->role == 'admin')
+                
+            @elseif(auth()->user()->role == 'empleado')
+                
+            @elseif(auth()->user()->role == 'cliente')
+                <div class="col text-right">
+                    <a href="{{route('home')}}" class="btn btn-sm btn-primary">Nuevo reserva</a>
+                </div>
+            @endif
             </div>
         </div>
         <div class="table-responsive">

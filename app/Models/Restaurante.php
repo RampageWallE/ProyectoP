@@ -19,6 +19,10 @@ class Restaurante extends Model
         return $this->hasMany(Reserva::class, '_id');
     }
 
+    public function creador(){
+        return $this->belongsTo(User::class, 'id_administrador');
+    }
+
     // public function scopeRestaurantes($query){
     //     // return $query->where('role','cliente');
     //     return $query->get();
