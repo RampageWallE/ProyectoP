@@ -19,44 +19,48 @@
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link " href="{{route('restaurantes.view')}}">
-        <i class="ni ni-briefcase-24 text-blue"></i> Restaurantes
+        <i class="ni ni-shop text-blue"></i> Restaurantes
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link " href="{{route('empleados.view')}}">
-        <i class="fas fa-stethoscope text-info"></i> Empleados
+        <i class="ni ni-single-02 text-info"></i> Empleados
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link " href="{{route('clientes.view')}}">
-        <i class="fas fa-bed text-warning"></i> Clientes
+        <i class="ni ni-single-02 text-info"></i> Clientes
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link " href="{{route('reservas.view')}}">
-        <i class="fas fa-stethoscope text-info"></i> Revisar reservas 
+        <i class="ni ni-badge text-warning"></i> Reservas v admin
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link " href="{{route('rrespuestas.view')}}">
-        <i class="fas fa-bed text-warning"></i> Responder consultas 
+        <i class="fa fa-question text-warning"></i> Consultas 
       </a>
     </li>      
     {{-- CLIENTES GAAAAAAAAA --}}
   </ul>
-  {{-- <h6 class="navbar-heading text-muted">CLIENTES VISTAS</h6>
+  <h6 class="navbar-heading text-muted">CLIENTES VISTAS</h6>
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link " href="{{route('reservas.view')}}">
-        <i class="fas fa-bed text-warning"></i> Reservas clientes
+        <i class="ni ni-badge text-warning"></i> Reservas clientes
       </a>
     </li>   
     <li class="nav-item">
       <a class="nav-link " href="{{route('consultas.view')}}">
-        <i class="fas fa-bed text-warning"></i> Consultas clientes 
+        <i class="fa fa-question text-warning"></i> Consultas clientes 
       </a>
-    </li>    --}}
-
+    </li>   
+    <li class="nav-item">
+      <a class="nav-link " href="{{route('rrespuestas.view')}}">
+        <i class="fa fa-question text-warning"></i> Responder consultas
+      </a>
+    </li> 
   </ul>  
     {{-- END CLIENTES  --}}
     
@@ -65,22 +69,22 @@
   <ul class="navbar-nav">
       <li class="nav-item">
       <a class="nav-link " href="{{route('restaurantes.view')}}">
-        <i class="ni ni-briefcase-24 text-blue"></i> Restaurantes
+        <i class="ni ni-shop text-blue"></i> Restaurantes
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link " href="{{route('clientes.view')}}">
-        <i class="fas fa-bed text-warning"></i> Clientes
+        <i class="ni ni-badge text-warning"></i> Clientes
       </a>
     </li>
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a class="nav-link " href="{{route('reservas.view')}}">
-        <i class="fas fa-stethoscope text-info"></i> Reservas v empleado
+        <i class="fas fa-stethoscope text-info"></i> Reservas
       </a>
-    </li>
+    </li> --}}
     <li class="nav-item">
       <a class="nav-link " href="{{route('rrespuestas.view')}}">
-        <i class="fas fa-bed text-warning"></i> Consultas 
+        <i class="fa fa-question text-warning"></i> Consultas 
       </a>
     </li> 
   </ul>   
@@ -89,12 +93,12 @@
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link " href="{{route('reservas.view')}}">
-        <i class="fas fa-bed text-warning"></i> Reservas clientes
+        <i class="ni ni-badge text-warning"></i> Reservas clientes
       </a>
     </li>   
     <li class="nav-item">
       <a class="nav-link " href="{{route('consultas.view')}}">
-        <i class="fas fa-bed text-warning"></i> Consultas clientes 
+        <i class="fa fa-question text-warning"></i> Consultas clientes 
       </a>
     </li>   
     {{-- <li class="nav-item">

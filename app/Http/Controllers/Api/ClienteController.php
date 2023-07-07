@@ -12,7 +12,6 @@ class ClienteController extends Controller
     public function __construct()
     {
        $this->middleware(['auth','empleadmin']);
-        
     }
 
     public function index()
@@ -46,7 +45,7 @@ class ClienteController extends Controller
             'email.email'=>'Ingresa un correo electronico valido',
             'celular.required'=>'El numero de celular es requerido',
             'celular.min'=>'El numero de celular debe de tener 9 caracteres',
-            'direccion:required'=>'La direccion es obligatoria',
+            'direccion.required'=>'La direccion es obligatoria',
             'direccion.min'=>'La direccion debe de tener mas de 10 letras'
         ];
 
@@ -111,7 +110,6 @@ class ClienteController extends Controller
         
         $cliente->fill($data);
         $cliente->save();     
-
 
         return redirect(route('clientes.view'));
     }
