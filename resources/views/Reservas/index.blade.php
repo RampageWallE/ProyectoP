@@ -13,7 +13,6 @@
                 @elseif(auth()->user()->role == 'cliente')
                     <h3 class="mb-0">Reservas del cliente <strong> {{auth()->user()->name}}</h3></strong>
                 @endif
-
             </div>
             @if (auth()->user()->role == 'admin')
                 

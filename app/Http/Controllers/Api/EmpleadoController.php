@@ -12,8 +12,7 @@ class EmpleadoController extends Controller
 {
     public function __construct()
     {
-       $this->middleware(['auth','admin']);
-        
+        $this->middleware(['auth','admin']);    
     }
 
     public function index()
@@ -34,7 +33,7 @@ class EmpleadoController extends Controller
         $rules= [
             'name' => 'required|min:5',
             'dni'=>'required|min:8',
-            'email' => 'required|email|distinc',
+            'email' => 'required|email|distinct',
             'celular' =>'required|min:9',
             'direccion'=> 'required|min:10',
         ];

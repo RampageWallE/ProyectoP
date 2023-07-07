@@ -33,7 +33,7 @@ class ClienteController extends Controller
         $rules= [
             'name' => 'required|min:5',
             'dni'=>'required|min:8',
-            'email' => 'required|email',
+            'email' => 'required|email|distinct',
             'celular' =>'required|min:9',
             'direccion'=> 'required|min:10',
         ];

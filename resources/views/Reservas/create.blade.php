@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
                 <label for="cantidad">Cantidad de personas</label>
-                <input type="number" name="cantidad" class="form-control" placeholder="Ingrese la cantidad de personas" value="{{old('cantidad')}}" >
+                <input type="number" max = "6" name="cantidad" class="form-control" placeholder="Ingrese la cantidad de personas" value="{{old('cantidad')}}" >
             </div>
             <button type="submit" class="btn btn-sm btn-primary">Crear reserva</button>
         </form>
